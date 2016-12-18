@@ -9,10 +9,18 @@ class SessionsController < ApplicationController
 
   def login_attempt
     authorized_user = User.authenticate(params[:username_or_email],params[:login_password])
-    if authorized_user
-      session[:user_id] = authorized_user.id
-      flash[:notice] = "Wow Welcome again, you logged in as #{authorized_user.user_name}"
-      redirect_to(:action => 'home')
+      if authorized_user
+        # Put the confirmation in here
+        if user.email_confirmed
+            session[:user_id] = authorized_user.id
+            flash[:notice] = "Wow Welcome again, you logged in as #{authorized_user.user_name}"
+            redirect_to(:action => 'home')
+        else
+          flash.now[:error] = 'Please activate your account by following the
+          instructions in the account confirmation email you received to proceed'
+          render 'login'
+        end
+        # ends the confirmation error here
     else
       flash[:notice] = "Invalid Username or Password"
       flash[:color]= "invalid"

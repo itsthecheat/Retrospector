@@ -1,5 +1,7 @@
 class User < ApplicationRecord
-
+  # Ensures that the user's confirmation token is inserted into the table
+  # Before the user is fully created
+  before_create :confirmation_token
 
   attr_accessor :password
   EMAIL_REGEX = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}/i
@@ -39,6 +41,20 @@ class User < ApplicationRecord
 
   def match_password(login_password="")
     encrypted_password == BCrypt::Engine.hash_secret(login_password, salt)
+  end
+
+#Confirm token for emails confirmation
+private
+  def confirmation_token
+      if self.confirm_token.blank?
+          self.confirm_token = SecureRandom.urlsafe_base64.to_s
+      end
+  end
+
+  def email_activate
+    self.email_confirmed = true
+    self.confirm_token = nil
+    save!(:validate => false)
   end
 
 

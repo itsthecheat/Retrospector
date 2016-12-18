@@ -26,6 +26,12 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   # root to: "reviews#index"
-  resources :users
+  #I guess this is making a route for email confirmation?
+  resources :users do
+    member do
+      get :confirm_email
+    end
+  end
+
   resources :reviews
 end
