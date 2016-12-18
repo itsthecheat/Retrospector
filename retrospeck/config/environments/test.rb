@@ -41,5 +41,14 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   #adding a host url
-  config.action_mailer.default_url_options = { :host => 'localhost' }
+  config.action_mailer.smtp_settings = {
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :user_name            => "retrospecktest@gmail.com",
+    :password             => "retrospeck",
+    :authentication       => "plain",
+    :enable_starttls_auto => true
+  }
+
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 end

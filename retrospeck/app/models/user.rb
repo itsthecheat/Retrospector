@@ -43,6 +43,12 @@ class User < ApplicationRecord
     encrypted_password == BCrypt::Engine.hash_secret(login_password, salt)
   end
 
+  def email_activate
+    self.email_confirmed = true
+    self.confirm_token = nil
+    save!(:validate => false)
+  end
+
 #Confirm token for emails confirmation
 private
   def confirmation_token
@@ -50,12 +56,5 @@ private
           self.confirm_token = SecureRandom.urlsafe_base64.to_s
       end
   end
-
-  def email_activate
-    self.email_confirmed = true
-    self.confirm_token = nil
-    save!(:validate => false)
-  end
-
 
 end

@@ -22,12 +22,6 @@ class UsersController < ApplicationController
     end
     render "users/new"
   end
-  #Fix because this is like some hybrid version of 4/5
-  private
-
-  def user_params
-    params.require(:user).permit(:user_name, :email, :password, :salt, :encrypted_password)
-  end
 
   def confirm_email
     user = User.find_by_confirm_token(params[:id])
@@ -41,5 +35,13 @@ class UsersController < ApplicationController
       redirect_to "/"
     end
   end
+
+  #Fix because this is like some hybrid version of 4/5
+  private
+
+  def user_params
+    params.require(:user).permit(:user_name, :email, :password, :salt, :encrypted_password)
+  end
+
 
 end

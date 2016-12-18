@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
     authorized_user = User.authenticate(params[:username_or_email],params[:login_password])
       if authorized_user
         # Put the confirmation in here
-        if user.email_confirmed
+        if authorized_user.email_confirmed
             session[:user_id] = authorized_user.id
             flash[:notice] = "Wow Welcome again, you logged in as #{authorized_user.user_name}"
             redirect_to(:action => 'home')
