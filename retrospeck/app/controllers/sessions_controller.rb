@@ -9,8 +9,8 @@ class SessionsController < ApplicationController
 
   def login_attempt
     authorized_user = User.authenticate(params[:username_or_email],params[:login_password])
-    session[:user_id] = authorized_user.id
     if authorized_user
+      session[:user_id] = authorized_user.id
       flash[:notice] = "Wow Welcome again, you logged in as #{authorized_user.user_name}"
       redirect_to(:action => 'home')
     else
@@ -30,8 +30,8 @@ class SessionsController < ApplicationController
   end
 
   def logout
-  session[:user_id] = nil
-  redirect_to :action => 'login'
+    session[:user_id] = nil
+    redirect_to :action => 'login'
   end
 
 end
