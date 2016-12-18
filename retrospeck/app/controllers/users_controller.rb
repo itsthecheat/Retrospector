@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     end
     render "new"
   end
-  #..................
+  #Fix because this is like some hybrid version of 4/5
   private
 
   def user_params
