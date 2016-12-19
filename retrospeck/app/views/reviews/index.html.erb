@@ -3,8 +3,18 @@
 <%= @data['description'] %><br><br>
 Published:<br>
 <%= @data['publishedAt'] %><br>
-
 </p>
+
 <br>
-<p>
-<%= @yelp %>
+
+
+<h1><%= @yelp %></h1><br>
+
+<% @tweet.each do |tweet|%>
+ <h3><%= tweet['text']%></h3>
+ <h4><%= tweet['created_at']%></h4>
+ <h4>@<%= tweet['user']['screen_name']%></h4><br>
+<%end%>
+
+
+
