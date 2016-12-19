@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
             flash[:notice] = "Wow Welcome again, you logged in as #{authorized_user.user_name}"
             redirect_to(:action => 'home')
         else
-          flash.now[:error] = 'Please activate your account by following the
+          flash[:notice] = 'Please activate your account by following the
           instructions in the account confirmation email you received to proceed'
           render 'login'
         end

@@ -1,0 +1,10 @@
+
+<% @page_title = "Reviews" %>
+<div>
+  <h1>Sign Up</h1>
+  <%= form_for(:post, :url => {:controller => 'reviews', :action => 'create'}) do |f| %>
+    <p> Username:</br> <%= f.text_field :title%> </p>
+    <p> content:</br> <%= f.text_field :content%> </p>
+    <%= f.submit :post %>
+  <% end %>
+</div>

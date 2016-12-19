@@ -14,7 +14,7 @@ class UsersController < ApplicationController
       UserMailer.registration_confirmation(@user).deliver
       # flash[:notice] = "You signed up successfully"
       # flash[:color]= "valid"
-      flash[:success] = "Please confirm your email to continue"
+      flash[:notice] = "Please confirm your email to continue"
     else
       # flash[:notice] = "Form is invalid"
       # flash[:color]= "invalid"
