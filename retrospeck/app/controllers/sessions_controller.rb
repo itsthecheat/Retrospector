@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
         end
         # ends the confirmation error here
     else
-      flash[:notice] = "Invalid Username or Password"
+      flash.now[:notice] = "Invalid Username or Password"
       flash[:color]= "invalid"
       render "login"
     end
