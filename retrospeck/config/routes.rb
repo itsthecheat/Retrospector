@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   # get "profile", :to => "sessions#profile"
   # get "setting", :to => "sessions#setting"
 
-  root :to => "sessions#login"
+  root :to => "reviews#index"
   get "signup", :to => "users#new"
   get "login", :to => "sessions#login"
   post "login_attempt", :to => "sessions#login_attempt"
