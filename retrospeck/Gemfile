@@ -1,5 +1,11 @@
 source 'https://rubygems.org'
 
+gem 'twitter'
+
+gem 'oauth2'
+
+gem 'figaro'
+
 gem 'yelp', require: 'yelp'
 
 gem 'httparty'
