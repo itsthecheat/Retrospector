@@ -1,11 +1,12 @@
-
 <% @page_title = "Reviews" %>
+
 <div>
-  <h1>Sign Up</h1>
+
+  <h1>Review of a Review ROAR</h1>
   <%= form_for(:review, :url => {:controller => 'reviews', :action => 'create'}) do |f| %>
     <p> Username:</br> <%= f.text_field :title%> </p>
     <p> Email:</br> <%= f.text_field :content%> </p>
-    <p> Password:</br> <%= f.password_field :review_link%></p>
+    <p> Password:</br> <%= f.text_field :review_link%></p>
     <%= f.submit "Post" %>
   <% end %>
 
