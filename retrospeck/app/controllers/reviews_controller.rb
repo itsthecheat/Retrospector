@@ -7,7 +7,7 @@ class ReviewsController < ApplicationController
   # yelp
   params = {term: 'starbucks'}
   res = Yelp.client.search('New York', params)
-  @yelp = res.businesses[2].snippet_text
+  @yelp = res.businesses[0].snippet_text
   #twitter
   @tweet = $twitter.user_timeline("realdonaldtrump", count: 10)
   end
