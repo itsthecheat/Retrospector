@@ -1,14 +1,106 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Retrospeck</title>
+    <title>
+      Retrospeck
+    </title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css" rel="stylesheet">
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-    <%= yield %>
+
+  <!-- NAV BAR -->
+<nav>
+  <div class="nav-wrapper #42a5f5 blue lighten-1" >
+    <a href="#!" class="brand-logo">Retrospeck</a>
+    <ul class="right hide-on-med-and-down">
+      <li><a href="http://localhost:3000/">Home</a></li>
+      <li><a href="/reviews/new">Write a Review</a></li>
+      <li><a href="#">Top Reviews?</a></li>
+      <li><a href="/login">Login</a></li>
+    </ul>
+  </div>
+</nav>
+
+ <nav id ="search-nav">
+    <div class="nav-wrapper #757575 grey darken-1">
+      <form>
+        <div class="input-field">
+          <input id="search" type="search" required>
+          <label for="search"><i class="material-icons">search</i></label>
+          <i class="material-icons">close</i>
+        </div>
+      </form>
+    </div>
+  </nav>
+
+
+  <!-- RENDERED MAIN CONTENT -->
+  <div class="container">
+
+      <%= yield %>
+
+  </div>
+
+  <!-- RENDERED MAIN CONTENT -->
+
+
+  <!-- FOOTER -->
+    <footer class="page-footer #42a5f5 blue lighten-1">
+      <div class="container">
+        <div class="row">
+          <div class="col l6 s12">
+            <h5 class="white-text">
+              About Retrospeck
+            </h5>
+
+            <h6 class="white-text"> Peer-reviews for peer-reviews!</h6>
+            <p class="grey-text text-lighten-4">
+              Retrospeck is commited to providing the highest form of peer-reviews that you can find on the interent.
+              Our expert user base is knows all orsomething.
+            </p>
+          </div>
+
+          <div class="col l4 offset-l2 s12">
+            <h5 class="white-text">
+              Developed By
+            </h5>
+
+            <ul>
+              <li>
+                <a class="grey-text text-lighten-3" href="https://github.com/nickcostanzo42">Nick Costanzo</a>
+              </li>
+
+              <li>
+                <a class="grey-text text-lighten-3" href="https://github.com/jamesjholee">James Lee</a>
+              </li>
+
+              <li>
+                <a class="grey-text text-lighten-3" href="https://github.com/itsthecheat">Leslie Behum</a>
+              </li>
+
+              <li>
+                <a class="grey-text text-lighten-3" href="https://github.com/rlmcmc">Robert Mathews</a>
+              </li>
+
+              <li>
+                <a class="grey-text text-lighten-3" href="https://github.com/Itseasymike">Michael Rivera</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-copyright #757575 grey darken-1">
+        <div class="container">
+          © 2016 Retrospeck <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+        </div>
+      </div>
+    </footer>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
   </body>
 </html>

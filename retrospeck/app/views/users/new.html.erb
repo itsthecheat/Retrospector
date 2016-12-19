@@ -1,0 +1,21 @@
+<% @page_title = "UserAuth | Signup" %>
+<div>
+  <h3>Sign Up</h3>
+  <br />
+  <%= form_for(:user, :url => {:controller => 'users', :action => 'create'}) do |f| %>
+    <p> Username</br> <%= f.text_field :user_name%> </p>
+    <p> Email</br> <%= f.text_field :email%> </p>
+    <p> Password</br> <%= f.password_field :password%></p>
+    <p> Confirm Password</br> <%= f.password_field :password_confirmation%> </p>
+    <button class="btn waves-effect waves-light" type="submit" name="action"><%= f.submit :Signup %></button>
+  <% end %>
+
+  <br />
+  <% if @user.errors.any? %>
+    <ul>
+    <% for message_error in @user.errors.full_messages %>
+      <span style="color: red;"><li><%= message_error %></li></span>
+    <% end %>
+    </ul>
+  <% end %>
+</div>
