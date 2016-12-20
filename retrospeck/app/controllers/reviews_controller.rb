@@ -16,13 +16,21 @@ before_filter :authenticate_user, :only => [:home, :profile, :setting, :new]
       @yelp = res.business.snippet_text
       #twitter
       @tweet = $twitter.user_timeline("realdonaldtrump", count: 10)
+
+      #Search Stuff
+
+        if params[:search]
+          @reviews = Reviews.search(params[:search]).order("created_at DESC")
+        end
+
     end
 
     def new
-      @reivew = Review.new
+      @review = Review.new
     end
 
     def create
+
         title = user_params[:title]
         content = user_params[:content]
         review_link = user_params[:review_link]
@@ -43,8 +51,8 @@ before_filter :authenticate_user, :only => [:home, :profile, :setting, :new]
               content: review[:content],
               user_id: session[:user_id]
               )
-  redirect_to "/home"
-end
+      redirect_to "/home"
+    end
 
 
 
@@ -52,6 +60,7 @@ end
       Review.destroy(params[:id])
       redirect_to(:back)
     end
+
 
     private
     def user_params
