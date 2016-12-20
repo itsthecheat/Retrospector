@@ -3,6 +3,7 @@ class ReviewsController < ApplicationController
 
     def index
       @reviews = Review.all
+      @users = User.all
     end
 
     def new
@@ -20,8 +21,18 @@ class ReviewsController < ApplicationController
         user_id: session[:user_id])
       # @review.save
 
-      redirect_to "/reviews/new"
+      redirect_to "/reviews"
     end
+
+    def update
+      review = params['review']
+      Review.update(params[:id],
+              title: review[:title],
+              content: review[:content],
+              user_id: session[:user_id]
+              )
+  redirect_to "/home"
+end
 
     def destroy
       Review.destroy(params[:id])
@@ -33,4 +44,4 @@ class ReviewsController < ApplicationController
       params.require(:review).permit(:title, :content, :review_link)
     end
 
-  end
+end

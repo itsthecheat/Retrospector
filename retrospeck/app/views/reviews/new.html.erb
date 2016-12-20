@@ -1,13 +1,10 @@
 <% @page_title = "Reviews" %>
 
-<div>
-
-  <h1>Review of a Review ROAR</h1>
-  <%= form_for(:review, :url => {:controller => 'reviews', :action => 'create'}) do |f| %>
-    <p> Username:</br> <%= f.text_field :title%> </p>
-    <p> Email:</br> <%= f.text_field :content%> </p>
-    <p> Password:</br> <%= f.text_field :review_link%></p>
-    <%= f.submit "Post" %>
-  <% end %>
-
-</div>
+ <h1>R.O.A.R</h1>
+ 
+ <%= form_for(:review, :url => {:controller => 'reviews', :action => 'create'}) do |f| %>
+   <p> Title:</br> <%= f.text_field :title%> </p>
+   <p> Content:</br> <%= f.text_area :content, class: "materialize-textarea" %> </p>
+   <p> Review Link:</br> <%= f.text_field :review_link%></p>
+   <%= f.submit %>
+ <% end %>

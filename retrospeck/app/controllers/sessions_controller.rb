@@ -3,6 +3,11 @@ class SessionsController < ApplicationController
   before_filter :authenticate_user, :only => [:home, :profile, :setting]
   before_filter :save_login_state, :only => [:login, :login_attempt]
 
+  def home
+    flash[:notice] = 'Get to work minon make us our MONEY!'
+    @reviews = Review.where(user_id: session[:user_id])
+  end
+
   def login
     #Login Form
   end
@@ -22,13 +27,10 @@ class SessionsController < ApplicationController
         end
         # ends the confirmation error here
     else
-      flash[:notice] = "Invalid Username or Password"
+      flash.now[:notice] = "Invalid Username or Password"
       flash[:color]= "invalid"
       render "login"
     end
-  end
-
-  def home
   end
 
   def profile
