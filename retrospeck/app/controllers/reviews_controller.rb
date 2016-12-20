@@ -1,20 +1,20 @@
 class ReviewsController < ApplicationController
-<<<<<<< HEAD
+
 
   def index
-  #news_api
-  response = HTTParty.get('https://newsapi.org/v1/articles?source=associated-press&sortBy=top&apiKey=d7bd4c29053c495c9845714ee487f096', {format: :json})
-  @data = response['articles'][0]
-  # yelp
-  params = {term: 'starbucks'}
-  res = Yelp.client.search('New York', params)
-  @yelp = res.businesses[0].snippet_text
-  #twitter
-  @tweet = $twitter.user_timeline("realdonaldtrump", count: 10)
+    response = HTTParty.get("https://newsapi.org/v1/articles?source=associated-press&sortBy=top&apiKey=#{ENV['news']}", {format: :json})
+    @data = response['articles'][0]
+    #walmart_api
+    response = HTTParty.get("http://api.walmartlabs.com/v1/reviews/33093101?apiKey=#{ENV['walmart']}", {format: :json})
+    @walm = response
+    # yelp
+    params = {term: 'starbucks'}
+    res = Yelp.client.search('New York', params)
+    @yelp = res.businesses[0].snippet_text
+    #twitter
+    @tweet = $twitter.user_timeline("realdonaldtrump", count: 10)
   end
 
-end
-=======
    before_filter :authenticate_user, :only => [:home, :profile, :setting, :new]
 
    def new
@@ -42,4 +42,5 @@ end
    end
 
  end
->>>>>>> 0e63e8d09ca60adfd4602e6672ab9b2b14471937
+
+
