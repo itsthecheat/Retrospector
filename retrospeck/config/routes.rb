@@ -23,7 +23,6 @@ Rails.application.routes.draw do
   get "home", :to => "sessions#home"
   get "profile", :to => "sessions#profile"
   get "setting", :to => "sessions#setting"
-
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   # root to: "reviews#index"
   #I guess this is making a route for email confirmation?

@@ -1,21 +1,32 @@
 <p>
-<h3><%=@walm['reviews'][0]['reviewText']%></h3>
+<!-- WALMART -->
+<% @walm.each do |review|%>
+ <h3>Reviewer: <%= review['reviewer']%></h3>
+ <h4>Item: <%= review['name']%></h4>
+ <h5><%= review['reviewText']%></h5>
+<%end%>
+
+<br>
+<!-- YELP -->
+
+<h4><%= @yelp %></h4><br>
+
+
+<!-- TWITTER -->
+<% @tweet.each do |tweet|%>
+ <h3><%= tweet['text']%></h3>
+ <h4><%= tweet['created_at']%></h4>
+ <h4>@<%= tweet['user']['screen_name']%></h4><br>
+<%end%>
+
+<br>
+<!-- NEWSAPI -->
 <h1><%= @data['title'] %></h1><br>
 <%= @data['description'] %><br><br>
 Published:<br>
 <%= @data['publishedAt'] %><br>
 </p>
 
-<br>
-
-
-<h1><%= @yelp %></h1><br>
-
-<% @tweet.each do |tweet|%>
- <h3><%= tweet['text']%></h3>
- <h4><%= tweet['created_at']%></h4>
- <h4>@<%= tweet['user']['screen_name']%></h4><br>
-<%end%>
 
 <!-- <a href="/users/new">Create a new user</a> -->
 
