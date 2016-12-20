@@ -11,6 +11,7 @@
   <% end %>
 
   <br />
+
   <% if @user.errors.any? %>
     <ul>
     <% for message_error in @user.errors.full_messages %>
@@ -18,4 +19,5 @@
     <% end %>
     </ul>
   <% end %>
+
 </div>

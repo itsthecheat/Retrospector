@@ -2,6 +2,11 @@ class SessionsController < ApplicationController
   before_filter :authenticate_user, :only => [:home, :profile, :setting]
   before_filter :save_login_state, :only => [:login, :login_attempt]
 
+  def home
+    flash[:notice] = 'Get to work minon make us our MONEY!'
+    @reviews = Review.where(user_id: session[:user_id])
+  end
+
   def login
     #Login Form
   end
@@ -17,7 +22,7 @@ class SessionsController < ApplicationController
 
             redirect_to(:action => 'home')
         else
-          flash.now[:error] = 'Please activate your account by following the
+          flash[:notice] = 'Please activate your account by following the
           instructions in the account confirmation email you received to proceed'
           render 'login'
         end
@@ -27,9 +32,6 @@ class SessionsController < ApplicationController
       flash[:color]= "invalid"
       render "login"
     end
-  end
-
-  def home
   end
 
   def profile

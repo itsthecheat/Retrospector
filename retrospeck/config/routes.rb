@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   # get "profile", :to => "sessions#profile"
   # get "setting", :to => "sessions#setting"
 
-  root :to => "reviews#index"
+  root :to => "sessions#home"
   get "signup", :to => "users#new"
   get "login", :to => "sessions#login"
   post "login_attempt", :to => "sessions#login_attempt"
@@ -27,7 +27,6 @@ Rails.application.routes.draw do
   get "home", :to => "sessions#home"
   get "profile", :to => "sessions#profile"
   get "setting", :to => "sessions#setting"
-
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   # root to: "reviews#index"
   #I guess this is making a route for email confirmation?
@@ -39,4 +38,5 @@ Rails.application.routes.draw do
 
   resources :reviews
   resources :password_resets, only: [:new, :create, :edit, :update]
+  
 end

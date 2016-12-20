@@ -1,67 +1,81 @@
-<!-- <a href="/users/new">Create a new user</a> -->
+<p>
+<!-- WALMART -->
+<% @walm.each do |review|%>
+ <h3>Reviewer: <%= review['reviewer']%></h3>
+ <h4>Item: <%= review['name']%></h4>
+ <h5><%= review['reviewText']%></h5>
+<%end%>
 
+<br>
+<!-- YELP -->
+
+<h4><%= @yelp %></h4><br>
+
+
+<!-- TWITTER -->
+<% @tweet.each do |tweet|%>
+ <h3><%= tweet['text']%></h3>
+ <h4><%= tweet['created_at']%></h4>
+ <h4>@<%= tweet['user']['screen_name']%></h4><br>
+<%end%>
+
+<br>
+<!-- NEWSAPI -->
+<h1><%= @data['title'] %></h1><br>
+<%= @data['description'] %><br><br>
+Published:<br>
+<%= @data['publishedAt'] %><br>
+</p>
+
+
+<!-- <a href="/users/new">Create a new user</a> -->
 <div class="row">
       <div class="col s6 m6 card-panel">
-        <h5 class="blue-text text-darken-2 center-align">Most Recent</h5>
+        <h5 class="blue-text text-darken-2 center-align">Recent</h5>
       </div>
 
       <div class="col s6 m6 card-panel">
         <h5 class="blue-text text-darken-2 center-align">Trending</h5>
       </div>
-    </div>
     <!-- MOST RECENTREVIEWS  + MOST LIKED REVIEWS-->
 
     <div class="row">
       <div id="left">
-        <div class="col s6 m6">
+
+
+        <div class="col s12 m6">
+          <% if @reviews.empty? %>
+            <%= flash[:notice] %>
+          <% else %>
+          <% @reviews.each do |review| %>
           <div class="card">
+
+
             <div class="card-image waves-effect waves-block waves-light">
-              <!-- <img class="activator" src="images/office.jpg"> -->
-              <p class="card-content">Celebrate success right, the only way, apple. It’s important to use cocoa butter. It’s the key to more success, why not live smooth? Why live rough? Learning is cool, but knowing is better, and I know the key to success. To succeed you must believe. When you believe, you will succeed. </p>
+              <img class="activator" src="images/office.jpg">
             </div>
 
             <div class="card-content">
-              <span class="card-title activator grey-text text-darken-4">Recent 1<i class="material-icons right">more_vert</i></span>
-              <p>
-                <a href="#">Link to Article</a>
-              </p>
+              <span class="card-title activator grey-text text-darken-4"><%= review['title'] %><br><i class="material-icons right">more_vert</i></span>
+                <p>
+                  <a href='/reviews/<%= review['id'] %>'> Full Review </a>
+                </p>
             </div>
 
             <div class="card-reveal">
-              <span class="card-title grey-text text-darken-4">Artic/Title: User Title<i class="material-icons right">close</i></span>
-              <p>
-                Hammock talk come soon. The other day the grass was brown, now it’s green because I ain’t give up. Never surrender. I’m giving you cloth talk, cloth. Special cloth alert, cut from a special cloth. Watch your back, but more importantly when you get out the shower, dry your back, it’s a cold world out there. The key to success is to keep your head above the water, never give up. Bless up.
-              </p>
-
-              <p>By: User1</p>
-
+              <span class="card-title grey-text text-darken-4"><%= review['title'] %><i class="material-icons right">close</i></span>
+                <p><%= review['content'] %></p>
+                <br>
+                <% @users.each do |user| %>
+                  <% if user['id'] === review['user_id'] %>
+                    <%= user['user_name'] %>
+                  <%end%>
+                <%end%>
+              </div>
             </div>
-          </div>
-          <!-- CARD 1-->
+                <% end %>
+              <% end %>
 
-          <div class="card">
-            <div class="card-image waves-effect waves-block waves-light">
-              <!-- <img class="activator" src="images/office.jpg"> -->
-              <p class="card-content">Celebrate success right, the only way, apple. It’s important to use cocoa butter. It’s the key to more success, why not live smooth? Why live rough? Learning is cool, but knowing is better, and I know the key to success. To succeed you must believe. When you believe, you will succeed. </p>
-            </div>
-
-            <div class="card-content">
-              <span class="card-title activator grey-text text-darken-4">Recent 1<i class="material-icons right">more_vert</i></span>
-              <p>
-                <a href="#">Link to Article</a>
-              </p>
-            </div>
-
-            <div class="card-reveal">
-              <span class="card-title grey-text text-darken-4">Artic/Title: User Title<i class="material-icons right">close</i></span>
-              <p>
-                Hammock talk come soon. The other day the grass was brown, now it’s green because I ain’t give up. Never surrender. I’m giving you cloth talk, cloth. Special cloth alert, cut from a special cloth. Watch your back, but more importantly when you get out the shower, dry your back, it’s a cold world out there. The key to success is to keep your head above the water, never give up. Bless up.
-              </p>
-
-              <p>By: User1</p>
-
-            </div>
-          </div>
           <!-- CARD 2-->
         </div>
         <!-- RECENT REVIEW COLUMN  -->
@@ -124,4 +138,5 @@
       </div>
       <!-- LIKED REVIEWS -->
     </div>
-    <!-- MAIN ROW-->
+
+  </div>
