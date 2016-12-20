@@ -7,14 +7,13 @@
     <p>Password</br> <%= password_field_tag :login_password %></p>
     <button class="btn waves-effect waves-light #64b5f6 blue lighten-2" type="submit" name="action"><%= submit_tag("Log In") %></button>
     <br />
-    <p> If you want to enlighten the rest of the internet <a href="users/new">sign up</a> first!
+    <p> If you want to enlighten the world make sure to <a href="users/new">sign up</a> first!</p>
     <% end %>
 
       <br />
       <br />
 
      <span style="color: red;"> <%= flash[:notice] %> </span>
-
      <span style="color: red;"> <%= flash[:success] %> </span>
 
 </div>

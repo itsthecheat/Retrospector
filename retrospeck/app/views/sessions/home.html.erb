@@ -1,5 +1,5 @@
-<div><h6><a href='/logout'>Logout</a></h6></div>
-<div><h6 data-target="modal1"><a href="#">Profile Info</a></h6></div>
+<div><h6><a href='/logout'>Not <%=@current_user.user_name%>? Logout</a></h6></div>
+<div><h6><a href="#">Profile Info</a></h6></div>
 <h4>Welcome, <%=@current_user.user_name%>!</h4>
 <!-- <p>Find me in app/views/sessions/home.html.erb</p> -->
 <!-- <h2>YOU DID IT </h2> -->
@@ -22,13 +22,13 @@
 
     <div class="col s6">
     <span class="card-title">Reviews you've liked!</span>
-      <ul class="collapsible popout" data-collapsible="accordion">
+      <ul class="collapsible popout" data-collapsible="expanable">
         <li>
           <div class="collapsible-header"><p>Your Article title<i class="material-icons right">more_vert</i></p></div>
           <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
         </li>
         <li>
-          <div class="collapsible-header"><span class="badge">1</span><i class="material-icons">place</i>Second</div>
+          <div class="collapsible-header"><p>Liked Article<i class="material-icons right">more_vert</i>Second</div>
           <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
         </li>
       </ul>

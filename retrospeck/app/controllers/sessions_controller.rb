@@ -1,5 +1,4 @@
 class SessionsController < ApplicationController
-@user = "hello"
   before_filter :authenticate_user, :only => [:home, :profile, :setting]
   before_filter :save_login_state, :only => [:login, :login_attempt]
 

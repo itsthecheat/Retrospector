@@ -16,8 +16,10 @@
 //= require_tree .
 
   $(document).ready(function(){
-    $('.modal').modal();
-    $('#modal1').modal('open');
-      $('#modal1').modal('close');
+
+
+    // Sidenav for mobile
+    $(".button-collapse").sideNav();
+
   });
 
