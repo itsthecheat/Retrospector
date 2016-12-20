@@ -1,5 +1,4 @@
 class SessionsController < ApplicationController
-
   before_filter :authenticate_user, :only => [:home, :profile, :setting]
   before_filter :save_login_state, :only => [:login, :login_attempt]
 
@@ -18,7 +17,9 @@ class SessionsController < ApplicationController
         # Put the confirmation in here
         if authorized_user.email_confirmed
             session[:user_id] = authorized_user.id
-            flash[:notice] = "Wow Welcome again, you logged in as #{authorized_user.user_name}"
+
+            flash[:notice] = "Welcome again, you were logged in as #{authorized_user.user_name}"
+
             redirect_to(:action => 'home')
         else
           flash[:notice] = 'Please activate your account by following the
@@ -27,7 +28,7 @@ class SessionsController < ApplicationController
         end
         # ends the confirmation error here
     else
-      flash.now[:notice] = "Invalid Username or Password"
+      flash[:notice] = "Invalid Username or Password"
       flash[:color]= "invalid"
       render "login"
     end
@@ -43,5 +44,4 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
     redirect_to :action => 'login'
   end
-
 end

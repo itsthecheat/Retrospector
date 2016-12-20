@@ -10,12 +10,12 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <body>
+  <body class="#fafafa grey lighten-5">
 
-  <!-- NAV BAR -->
-<nav>
+<!-- NAV BAR -->
+<!-- <nav>
   <div class="nav-wrapper #42a5f5 blue lighten-1" >
-    <a href="#!" class="brand-logo">Retrospeck</a>
+    <a href="http://localhost:3000/" class="brand-logo">Retrospeck</a>
     <ul class="right hide-on-med-and-down">
       <li><a href="http://localhost:3000/">Home</a></li>
       <li><a href="/reviews/new">Write a Review</a></li>
@@ -23,10 +23,17 @@
       <li><a href="/login">Login</a></li>
     </ul>
   </div>
-</nav>
+</nav> -->
+
+<!-- NAV ITEMS RENDER -->
+<% if session[:user_id] %>
+  <%= render 'postlog' %>
+  <% else %>
+  <%= render 'prelog' %>
+<% end %>
 
  <nav id ="search-nav">
-    <div class="nav-wrapper #757575 grey darken-1">
+    <div class="nav-wrapper #64b5f6 blue lighten-2">
       <form>
         <div class="input-field">
           <input id="search" type="search" required>
@@ -59,8 +66,8 @@
 
             <h6 class="white-text"> Peer-reviews for peer-reviews!</h6>
             <p class="grey-text text-lighten-4">
-              Retrospeck is commited to providing the highest form of peer-reviews that you can find on the interent.
-              Our expert user base is knows all orsomething.
+              Retrospeck is commited to providing the highest form of peer-reviews that you can find on the internet.
+              Our expert user base is.
             </p>
           </div>
 
@@ -71,32 +78,28 @@
 
             <ul>
               <li>
-                <a class="grey-text text-lighten-3" href="https://github.com/nickcostanzo42">Nick Costanzo</a>
+                <a class="grey-text text-lighten-3" href="https://github.com/nickcostanzo42" target="_blank">Nick Costanzo</a>
               </li>
 
               <li>
-                <a class="grey-text text-lighten-3" href="https://github.com/jamesjholee">James Lee</a>
+                <a class="grey-text text-lighten-3" href="https://github.com/jamesjholee" target="_blank">James Lee</a>
               </li>
 
               <li>
-                <a class="grey-text text-lighten-3" href="https://github.com/itsthecheat">Leslie Behum</a>
+                <a class="grey-text text-lighten-3" href="https://github.com/itsthecheat" target="_blank">Leslie Behum</a>
               </li>
 
               <li>
-                <a class="grey-text text-lighten-3" href="https://github.com/rlmcmc">Robert Mathews</a>
-              </li>
-
-              <li>
-                <a class="grey-text text-lighten-3" href="https://github.com/Itseasymike">Michael Rivera</a>
+                <a class="grey-text text-lighten-3" href="https://github.com/Itseasymike" target="_blank">Michael Rivera</a>
               </li>
             </ul>
           </div>
         </div>
       </div>
 
-      <div class="footer-copyright #757575 grey darken-1">
+      <div class="footer-copyright #64b5f6 blue lighten-2">
         <div class="container">
-          © 2016 Retrospeck <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+          © 2016 Retrospeck <a class="grey-text text-lighten-4 right" href="https://www.gofundme.com/" target="_blank">Invest in Retrospeck today!</a>
         </div>
       </div>
     </footer>
