@@ -36,6 +36,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    @user = User.find_by params[:id]
+
+  end
+
   #Fix because this is like some hybrid version of 4/5
   private
 
