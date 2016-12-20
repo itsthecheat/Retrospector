@@ -6,16 +6,15 @@ class ReviewsController < ApplicationController
    end
 
    def create
-       title = user_params[:title]
-       content = user_params[:content]
-       review_link = user_params[:review_link]
+         title = user_params[:title]
+         content = user_params[:content]
+         review_link = user_params[:review_link]
      @review = Review.create(
        title: title,
        content: content,
        review_link: review_link,
        user_id: session[:user_id])
-     @review.save
-
+    #  @review.save
      redirect_to "/reviews/new"
    end
 
