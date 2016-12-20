@@ -13,7 +13,6 @@ class SessionsController < ApplicationController
         # Put the confirmation in here
         if authorized_user.email_confirmed
             session[:user_id] = authorized_user.id
-            flash[:notice] = "Wow Welcome again, you logged in as #{authorized_user.user_name}"
             redirect_to(:action => 'home')
         else
           flash.now[:error] = 'Please activate your account by following the
