@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+
+  attr_accessor :remember_token, :activation_token, :reset_token
+
   # Ensures that the user's confirmation token is inserted into the table
   # Before the user is fully created
   before_create :confirmation_token
@@ -12,7 +15,7 @@ class User < ApplicationRecord
 
   before_save :encrypt_password
   after_save  :clear_password
-#encryption maybe?
+#encryption
   def encrypt_password
     if password.present?
       self.salt = BCrypt::Engine.generate_salt
@@ -48,6 +51,18 @@ class User < ApplicationRecord
     self.confirm_token = nil
     save!(:validate => false)
   end
+
+#Sets password reset attributes
+def create_reset_digest
+  self.reset_token = SecureRandom.urlsafe_base64.to_s
+  update_attribute(:reset_digest, BCrypt::Engine.hash_secret(reset_token, salt))
+  update_attribute(:reset_sent_at, Time.zone.now)
+end
+
+# Sends password reset email.
+def send_password_reset_email
+  UserMailer.password_reset(self).deliver_now
+end
 
 #Confirm token for emails confirmation
 private

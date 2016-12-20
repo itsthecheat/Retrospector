@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161218204719) do
+ActiveRecord::Schema.define(version: 20161220143159) do
 
   create_table "reviews", force: :cascade do |t|
     t.string   "title"
@@ -31,6 +31,8 @@ ActiveRecord::Schema.define(version: 20161218204719) do
     t.datetime "updated_at",                         null: false
     t.boolean  "email_confirmed",    default: false
     t.string   "confirm_token"
+    t.string   "reset_digest"
+    t.datetime "reset_sent_at"
   end
 
 end

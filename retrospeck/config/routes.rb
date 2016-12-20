@@ -38,4 +38,5 @@ Rails.application.routes.draw do
   end
 
   resources :reviews
+  resources :password_resets, only: [:new, :create, :edit, :update]
 end
