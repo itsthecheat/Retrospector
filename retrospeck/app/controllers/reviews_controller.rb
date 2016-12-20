@@ -1,6 +1,10 @@
 class ReviewsController < ApplicationController
     before_filter :authenticate_user, :only => [:home, :profile, :setting, :new]
-    
+
+    def index
+      @reviews = Review.all
+    end
+
     def new
       @reivew = Review.new
     end
@@ -14,9 +18,14 @@ class ReviewsController < ApplicationController
         content: content,
         review_link: review_link,
         user_id: session[:user_id])
-      @review.save
+      # @review.save
 
       redirect_to "/reviews/new"
+    end
+
+    def destroy
+      Review.destroy(params[:id])
+      redirect_to(:back)
     end
 
     private

@@ -1,2 +1,7 @@
-<a href="/users/new">Create a new user</a>
 
+<% @reviews.each do |reviews| %>
+	<%= review['title'] %><br>
+	<a href='/reviews/<%= review['id'] %>'>View <%= review['title'] %>'s details</a>
+  <%= button_to 'Delete Review', review, method: :delete %><br>
+<% end %>
+<a href="/users/new">Create a new user</a>
