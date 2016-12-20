@@ -14,7 +14,7 @@ class UsersController < ApplicationController
       UserMailer.registration_confirmation(@user).deliver
       # flash[:notice] = "You signed up successfully"
       # flash[:color]= "valid"
-      flash[:success] = "Please confirm your email to continue"
+      flash[:notice] = "Please confirm your email to continue"
     else
       # flash[:notice] = "Form is invalid"
       # flash[:color]= "invalid"
@@ -27,7 +27,7 @@ class UsersController < ApplicationController
     user = User.find_by_confirm_token(params[:id])
     if user
       user.email_activate
-      flash[:success] = "Welcome to the Retrospeck! Your email has been confirmed.
+      flash[:success] = "Welcome to Retrospeck! Your email has been confirmed.
       Please sign in to continue."
       redirect_to "/login"
     else
