@@ -1,13 +1,14 @@
 <% provide(:title, "Forgot password") %>
-<h1>Forgot password</h1>
-
+<h4>Forgot password</h4>
+<br />
+<br />
 
     <%= form_for(:password_reset, url: password_resets_path) do |f| %>
       <%= f.label :email %>
       <%= f.email_field :email, class: 'form-control' %>
-
-      <%= f.submit "Submit", class: "btn btn-primary" %>
+      <button class="btn waves-effect waves-light #64b5f6 blue lighten-2" type="submit" name="action"><%= f.submit "Submit"%></button>
 <!-- Format the warning -->
-  <br><br><%= flash[:danger] = "*Email address not found*" %>
+  <br/ >
+  <span style="color: red;"><%= flash[:notice]%></span>
     <% end %>
 

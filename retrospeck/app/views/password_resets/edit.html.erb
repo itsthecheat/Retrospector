@@ -1,6 +1,7 @@
 <% provide(:title, 'Reset password') %>
-<h1>Reset password</h1>
-
+<h4>Reset password</h4>
+<br />
+<br />
     <%= form_for(@user, url: password_reset_path(params[:id])) do |f| %>
 
       <!-- Used to submit the an email along with the password reset form for further
@@ -13,6 +14,9 @@
       <%= f.label :password_confirmation, "Confirmation" %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
 
-      <%= f.submit "Update password", class: "btn btn-primary" %>
-    <% end %>
+     <button class="btn waves-effect waves-light #64b5f6 blue lighten-2" type="submit" name="action"><%= f.submit "Update password" %></button>
 
+    <% end %>
+<br />
+
+<span style="color: red;"><%= flash.now[:notice] %></span>

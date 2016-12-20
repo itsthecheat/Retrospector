@@ -1,5 +1,16 @@
 source 'https://rubygems.org'
 
+gem 'nokogiri'
+
+gem 'twitter'
+
+gem 'oauth2'
+
+gem 'figaro'
+
+gem 'yelp', require: 'yelp'
+
+gem 'httparty'
 
 #Have the password hashed in addition
 require 'digest/sha1'
