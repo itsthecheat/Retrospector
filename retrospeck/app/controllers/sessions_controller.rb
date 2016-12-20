@@ -12,7 +12,9 @@ class SessionsController < ApplicationController
         # Put the confirmation in here
         if authorized_user.email_confirmed
             session[:user_id] = authorized_user.id
+
             flash[:notice] = "Welcome again, you were logged in as #{authorized_user.user_name}"
+
             redirect_to(:action => 'home')
         else
           flash.now[:error] = 'Please activate your account by following the
@@ -21,7 +23,7 @@ class SessionsController < ApplicationController
         end
         # ends the confirmation error here
     else
-      flash.now[:notice] = "Invalid Username or Password"
+      flash[:notice] = "Invalid Username or Password"
       flash[:color]= "invalid"
       render "login"
     end

@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'password_resets/new'
+
+  get 'password_resets/edit'
+
   # get 'sessions/login_attempt'
 
   # get 'sessions/home'
@@ -34,4 +38,5 @@ Rails.application.routes.draw do
   end
 
   resources :reviews
+  resources :password_resets, only: [:new, :create, :edit, :update]
 end

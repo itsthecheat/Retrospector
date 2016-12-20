@@ -24,3 +24,7 @@ body {
   flex: 1 0 auto;
 }
 
+.logo {
+  height: 50px;
+  width: 50px;
+}
