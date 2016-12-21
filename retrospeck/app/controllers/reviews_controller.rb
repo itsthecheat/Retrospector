@@ -12,23 +12,25 @@ before_filter :authenticate_user, :only => [:home, :profile, :setting, :new]
       @reviews = Review.all
       @users = User.all
 
- #newsapi
-      response = HTTParty.get("https://newsapi.org/v1/articles?source=#{@article}&sortBy=top&apiKey=#{ENV['news']}", {format: :json})
-      @data = response['articles'][0]
-  #walmart_api
+      response = HTTParty.get("https://newsapi.org/v1/articles?source=associated-press&sortBy=top&apiKey=#{ENV['news']}", {format: :json})
+      @data = response['articles'].sample
+      #walmart_api
+      @item_num = $walmart
       response = HTTParty.get("http://api.walmartlabs.com/v1/reviews/#{@item_num}?apiKey=#{ENV['walmart']}", {format: :json})
-      @walm = response['reviews'][0..2]
-
-  #yelp
-      res = Yelp.client.business('starbucks-new-york')
-      @yelp = res.business.snippet_text
-
-  #twitter
-      @tweet = $twitter.user_timeline("#{@rand}", count: 1)
+      @walmart = response['reviews'].sample
+      # yelp
+      params = {term: $yelp_reviews}
+      res = Yelp.client.search($cities, params)
+      @yelp = res.businesses.sample
+      #twitter
+      @tweet = $twitter.user_timeline($top_100, count: 2)
     end
 
     def new
       @reivew = Review.new
+      @data1 = params[:data1]
+      @data2 = params[:data2]
+
     end
 
     def create
