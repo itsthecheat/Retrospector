@@ -37,8 +37,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by params[:id]
-
+   @user = User.find_by params[:id]
+   @review = Review.where(user_id: params[:id])
+   @user = User.find_by(id: params[:id])
   end
 
   #Fix because this is like some hybrid version of 4/5

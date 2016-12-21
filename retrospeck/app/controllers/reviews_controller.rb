@@ -34,7 +34,7 @@ before_filter :authenticate_user, :only => [:home, :profile, :setting, :new]
         title = user_params[:title]
         content = user_params[:content]
         review_link = user_params[:review_link]
-      @review = Review.create(
+        @review = Review.create(
         title: title,
         content: content,
         review_link: review_link,
@@ -54,12 +54,22 @@ before_filter :authenticate_user, :only => [:home, :profile, :setting, :new]
       redirect_to "/home"
     end
 
+    def search
+      @users = User.all
+      @reviews = Review.search(params[:search]).order("created_at DESC")
+      flash[:notice] = "We dont have that... or maybe learn 2 spell"
+
+    end
 
 
     def destroy
       Review.destroy(params[:id])
       redirect_to(:back)
     end
+
+   def show
+    @review = Review.find_by(id: params[:id])
+   end
 
 
     private

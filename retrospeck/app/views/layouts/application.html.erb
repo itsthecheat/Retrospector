@@ -4,13 +4,14 @@
     <title>
       Retrospeck
     </title>
+    <%= favicon_link_tag "retrospeck_neg.ico" %>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css" rel="stylesheet">
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <body class="#fafafa grey lighten-5">
+  <body class="#e0e0e0 grey lighten-2">
 
 <!-- NAV BAR -->
 <!-- <nav>
@@ -32,7 +33,7 @@
   <%= render 'prelog' %>
 <% end %>
 
- <nav id ="search-nav">
+<!--  <nav id ="search-nav">
     <div class="nav-wrapper #64b5f6 blue lighten-2">
       <form>
         <div class="input-field">
@@ -42,14 +43,19 @@
         </div>
       </form>
     </div>
-  </nav>
+  </nav> -->
+
+  <%= form_tag(search_reviews_path, :method => :get, class: "search-form") do %>
+    <%= search_field_tag :search, params[:search], placeholder: "Search for previous entries..", class: "nav-wrapper #64b5f6 blue lighten-2" %>
+  <% end %>
 
 
   <!-- RENDERED MAIN CONTENT -->
   <div class="container">
 
-      <%= yield %>
+    <%= image_tag("retrospeck_neg.png", class:"bg-logo responsive-img") %>
 
+    <%= yield %>
   </div>
 
   <!-- RENDERED MAIN CONTENT -->
@@ -64,10 +70,13 @@
               About Retrospeck
             </h5>
 
-            <h6 class="white-text"> Peer-reviews for peer-reviews!</h6>
+            <h6 class="white-text"> Peer-reviews of peer-reviews!</h6>
             <p class="grey-text text-lighten-4">
               Retrospeck is commited to providing the highest form of peer-reviews that you can find on the internet.
-              Our expert user base is.
+              Our expert user base is keen on bringing to light the real opinions of the internet.
+              <br/ >
+              <br />
+              <%= image_tag("retrospeck_neg.png", class:"logo") %>Spector is always watching.
             </p>
           </div>
 
@@ -99,7 +108,7 @@
 
       <div class="footer-copyright #64b5f6 blue lighten-2">
         <div class="container">
-          © 2016 Retrospeck <a class="grey-text text-lighten-4 right" href="https://www.gofundme.com/" target="_blank">Invest in Retrospeck today!</a>
+          © 2016 Retrospeck <a class="grey-text text-lighten-4 right" href="https://www.kickstarter.com/" target="_blank">Invest in Retrospeck today!</a>
         </div>
       </div>
     </footer>

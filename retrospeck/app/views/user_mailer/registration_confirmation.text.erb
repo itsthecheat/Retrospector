@@ -3,3 +3,7 @@ Hi <%= @user.user_name %>,
 Thanks for registering! To confirm your registration click the URL below.
 
 <%= confirm_email_user_url(@user.confirm_token) %>
+
+
+<h5>Thank you!</h5>
+<p>From your family over at, <%= image_tag("retrospeck_neg.png", class:"logo") %> Retrospeck</p>
