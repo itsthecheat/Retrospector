@@ -1,33 +1,11 @@
-  <div class="row">
 
-    <div class="col s6">
-    <span class="card-title">Your Reviews</span>
-      <ul class="collapsible" data-collapsible="accordion">
-        <li>
-          <div class="collapsible-header"><span class="new badge">4</span><i class="material-icons">filter_drama</i>First</div>
-          <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
-        </li>
 
-        <li>
-          <div class="collapsible-header"><span class="badge">1</span><i class="material-icons">place</i>Second</div>
-          <div class="collapsible-body"><p>Hammock talk come soon. The other day the grass was brown, now it’s green because I ain’t give up. Never surrender. I’m giving you cloth talk, cloth. Special cloth alert, cut from a special cloth. Watch your back, but more importantly when you get out the shower, dry your back, it’s a cold world out there. The key to success is to keep your head above the water, never give up. Bless up. Let’s see what Chef Dee got that they don’t want us to eat. Wraith talk.</p></div>
-        </li>
+
+<div class="row">
+  <div class="col s12 m12">
+        <ul class="collection with-header">
+        <li class="collection-header"><h5><%= @review['title'] %></h5></li>
+        <li class="collection-item card-content"><p><%= @review['content'] %></p></li>
       </ul>
-
-    </div>
-
-    <div class="col s6">
-    <span class="card-title">Reviews you've liked!</span>
-      <ul class="collapsible" data-collapsible="accordion">
-        <li>
-          <div class="collapsible-header"><span class="new badge">4</span><i class="material-icons">filter_drama</i>First</div>
-          <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
-        </li>
-        <li>
-          <div class="collapsible-header"><span class="badge">1</span><i class="material-icons">place</i>Second</div>
-          <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
-        </li>
-      </ul>
-    </div>
   </div>
-
+</div>

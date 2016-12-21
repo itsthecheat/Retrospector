@@ -36,7 +36,12 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :reviews
+   resources :reviews  do
+    collection do
+      get :search
+    end
+  end
+
   resources :password_resets, only: [:new, :create, :edit, :update]
 
 end
