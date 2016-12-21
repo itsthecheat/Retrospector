@@ -1,21 +1,30 @@
+require 'Walmart'
+
 class ReviewsController < ApplicationController
 before_filter :authenticate_user, :only => [:home, :profile, :setting, :new]
+
     def index
+
+  #variables to generate random params
+      @article = $sources.sample
+      @rand = $top_100.sample
+
       @reviews = Review.all
       @users = User.all
-      response = HTTParty.get("https://newsapi.org/v1/articles?source=associated-press&sortBy=top&apiKey=#{ENV['news']}", {format: :json})
+
+ #newsapi
+      response = HTTParty.get("https://newsapi.org/v1/articles?source=#{@article}&sortBy=top&apiKey=#{ENV['news']}", {format: :json})
       @data = response['articles'][0]
-      #walmart_api
+  #walmart_api
       response = HTTParty.get("http://api.walmartlabs.com/v1/reviews/33093101?apiKey=#{ENV['walmart']}", {format: :json})
       @walm = response['reviews']
-      # yelp
-      # params = {term: 'starbucks'}
-      # res = Yelp.client.search('New York', params)
-      # @yelp = res.businesses[0].snippet_text
-      res = Yelp.client.business('republic-new-york')
+
+  #yelp
+      res = Yelp.client.business('starbucks-new-york')
       @yelp = res.business.snippet_text
-      #twitter
-      @tweet = $twitter.user_timeline("realdonaldtrump", count: 10)
+
+  #twitter
+      @tweet = $twitter.user_timeline("#{@rand}", count: 1)
     end
 
     def new
@@ -44,9 +53,7 @@ before_filter :authenticate_user, :only => [:home, :profile, :setting, :new]
               user_id: session[:user_id]
               )
   redirect_to "/home"
-end
-
-
+    end
 
     def destroy
       Review.destroy(params[:id])
