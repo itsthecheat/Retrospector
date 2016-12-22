@@ -34,7 +34,6 @@ before_filter :authenticate_user, :only => [:home, :profile, :setting, :new]
               review_link: review_link,
               user_id: session[:user_id]
               )
-
         redirect_to "/reviews"
     end
 
@@ -66,6 +65,7 @@ before_filter :authenticate_user, :only => [:home, :profile, :setting, :new]
     def show
       @review = Review.find_by(id: params[:id])
     end
+
 
     private
 
