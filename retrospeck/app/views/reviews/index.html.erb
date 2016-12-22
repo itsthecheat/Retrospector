@@ -27,14 +27,12 @@
             </div>
 
             <div class="card-content">
-              <span class="card-title activator grey-text text-darken-4"><%= review['title'] %><br><i class="material-icons right">more_vert</i></span>
-                <p>
-                  <a href='/reviews/<%= review['id'] %>'> Full Review </a>
-                </p>
+              <p class="truncate"><span class="card-title activator grey-text text-darken-4"><%= review['title'] %><br><i class="material-icons right">more_vert</i></span></p>
+                <p><a href='/reviews/<%= review['id'] %>'> Full Review </a></p>
             </div>
 
             <div class="card-reveal">
-              <span class="card-title grey-text text-darken-4"><%= review['title'] %><i class="material-icons right">close</i></span>
+              <p><span class="card-title grey-text text-darken-4"><%= review['title'] %><i class="material-icons right">close</i></span></p>
                 <p><%= review['content'] %></p>
                 <br>
                 <% @users.each do |user| %>
@@ -44,8 +42,8 @@
                 <%end%>
               </div>
             </div>
-                <% end %>
-              <% end %>
+          <% end %>
+        <% end %>
 
           <!-- CARD 2-->
         </div>
@@ -53,33 +51,66 @@
       </div>
       <!-- RECENT REVIEWS -->
 
+
+
       <div id="right">
         <div class="col s6 m6">
-          <!-- CARD 1-->
+
+          <!-- TWITTER API-->
           <% @tweet.each do |tweet|%>
            <div class="card">
             <div class="card-image waves-effect waves-block waves-light">
-              <p class="card-content"> <%= tweet['text']%> <%= tweet['user']['screen_name']%> </p>
+              <p class="card-content"> <%= tweet['text']%></p>
             </div>
 
             <div class="card-content">
-              <span class="card-title activator grey-text text-darken-4"> You Trumpn Fam! <i class="material-icons right">more_vert</i></span>
-              <p>
-                <a href="#">Link to Article</a>
-              </p>
-            </div>
-
-            <div class="card-reveal">
-              <span class="card-title grey-text text-darken-4">Artic/Title: User Title<i class="material-icons right">close</i></span>
-              <p>
-                Hammock talk come soon. The other day the grass was brown, now it’s green because I ain’t give up. Never surrender. I’m giving you cloth talk, cloth. Special cloth alert, cut from a special cloth. Watch your back, but more importantly when you get out the shower, dry your back, it’s a cold world out there. The key to success is to keep your head above the water, never give up. Bless up.
-              </p>
-
-              <p>By: User1</p>
-
+              <p class="truncate"><span class="card-title activator grey-text text-darken-4"><%= tweet['user']['screen_name']%></span></p>
+              <%= link_to "Review", new_review_path(:data1 => tweet['text'], :data2 => nil) %>
             </div>
           </div>
           <% end %>
+
+          <!-- YELP API -->
+          <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <p class="card-content"> <%= @yelp.snippet_text %> </p>
+            </div>
+
+            <div class="card-content">
+              <p class="truncate"><span class="card-title activator grey-text text-darken-4"> Yelp Title</span></p>
+              <p><%= link_to "Review", new_review_path(:data1 => @yelp.url, :data2 => @yelp.name) %>
+            </div>
+          </div>
+
+        <!-- WALMART API -->
+
+          <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <p class="card-content"> <%= @walmart['reviewText'] %> </p>
+            </div>
+
+            <div class="card-content">
+              <p class="truncate"><span class="card-title activator grey-text text-darken-4"> <%= @walmart['name'] %></span></p>
+              <p><%= link_to "Review", new_review_path(:data1 => @walmart['reviewText'], :data2 => @walmart['name']) %>
+            </div>
+          </div>
+
+
+        <!-- NEWS API -->
+
+          <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <p class="card-content"><%= @data['description'] %> </p>
+            </div>
+
+            <div class="card-content">
+              <p class="truncate"><span class="card-title activator grey-text text-darken-4"><%= @data['title'] %></span></p>
+              <p><%= link_to "Review", new_review_path(:data1 => @data['url'], :data2 => @data['title']) %>
+            </div>
+          </div>
+
+
+          </div>
           <!-- CARD 2-->
         </div>
         <!-- LIKED REVIEW COLUMN  -->
@@ -88,34 +119,3 @@
     </div>
 
   </div>
-
-
-
-<!-- WALMART -->
-<% @walm.each do |review|%>
- <h3>Reviewer: <%= review['reviewer']%></h3>
- <h4>Item: <%= review['name']%></h4>
- <h5><%= review['reviewText']%></h5>
- <a href='/reviews/new' class="click_test">Write about this review!</a>
-<%end%>
-
-<br>
-<!-- YELP -->
-
-<h4><%= @yelp %></h4><br>
-
-
-<!-- TWITTER -->
-<% @tweet.each do |tweet|%>
- <h3><%= tweet['text']%></h3>
- <h4><%= tweet['created_at']%></h4>
- <h4>@<%= tweet['user']['screen_name']%></h4><br>
-<%end%>
-
-<br>
-<!-- NEWSAPI -->
-<h1><%= @data['title'] %></h1><br>
-<%= @data['description'] %><br><br>
-Published:<br>
-<%= @data['publishedAt'] %><br>
-</p>

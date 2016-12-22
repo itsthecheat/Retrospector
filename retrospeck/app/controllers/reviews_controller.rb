@@ -4,29 +4,23 @@ before_filter :authenticate_user, :only => [:home, :profile, :setting, :new]
       @reviews = Review.all
       @users = User.all
       response = HTTParty.get("https://newsapi.org/v1/articles?source=associated-press&sortBy=top&apiKey=#{ENV['news']}", {format: :json})
-      @data = response['articles'][0]
+      @data = response['articles'].sample
       #walmart_api
-      response = HTTParty.get("http://api.walmartlabs.com/v1/reviews/33093101?apiKey=#{ENV['walmart']}", {format: :json})
-      @walm = response['reviews']
+      @item_num = $walmart
+      response = HTTParty.get("http://api.walmartlabs.com/v1/reviews/#{@item_num}?apiKey=#{ENV['walmart']}", {format: :json})
+      @walmart = response['reviews'].sample
       # yelp
-      # params = {term: 'starbucks'}
-      # res = Yelp.client.search('New York', params)
-      # @yelp = res.businesses[0].snippet_text
-      res = Yelp.client.business('republic-new-york')
-      @yelp = res.business.snippet_text
+      params = {term: $yelp_reviews}
+      res = Yelp.client.search($cities, params)
+      @yelp = res.businesses.sample
       #twitter
-      @tweet = $twitter.user_timeline("realdonaldtrump", count: 10)
-
-      #Search Stuff
-
-        if params[:search]
-          @reviews = Reviews.search(params[:search]).order("created_at DESC")
-        end
-
+      @tweet = $twitter.user_timeline($top_100, count: 2)
     end
 
     def new
-      @review = Review.new
+      @reivew = Review.new
+      @data1 = params[:data1]
+      @data2 = params[:data2]
     end
 
     def create
