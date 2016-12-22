@@ -39,8 +39,10 @@ class UsersController < ApplicationController
   end
 
   def show
+
     @reviews = Review.where(user_id: params[:id])
     @user = User.find_by(id: params[:id])
+
   end
 
   #Fix because this is like some hybrid version of 4/5

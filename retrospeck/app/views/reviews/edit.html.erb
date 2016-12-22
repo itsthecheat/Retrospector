@@ -1,8 +1,5 @@
 <%= form_for :review, method: 'patch', url: {action: "update"}  do |f| %>
-  <%= label(:review, :title) %>
-  <%= f.text_field :title %><br>
-
-  <%= label(:review, :content) %>
-  <%= f.text_field :content %><br>
-    <%= f.submit "Save Edits"%>
+  <p>Title<br /><%= f.text_field :title %></p>
+  <p> Content<br /> <%= f.text_area :content, class: "materialize-textarea" %> </p>
+  <button class="btn waves-effect waves-light #64b5f6 blue lighten-2"><%= f.submit "Save"%></button>
 <% end %>
