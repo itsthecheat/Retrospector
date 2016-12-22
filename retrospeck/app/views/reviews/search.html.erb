@@ -6,7 +6,7 @@
       <div class="col s12 m12">
         <div class="card">
             <div class="card-image waves-effect waves-block waves-light">
-              <p class="card-content truncate"> Hammock talk come soon. The other day the grass was brown, now it’s green because I ain’t give up. Never surrender. I’m giving you cloth talk, cloth. Special cloth alert, cut from a special cloth. Watch your back, but more importantly when you get out the sho </p>
+              <p class="card-content truncate"></p>
             </div>
 
             <div class="card-content">
@@ -15,11 +15,11 @@
                 <a href="/reviews/<%= review['id'] %>">Link to Article</a>
               </p>
             </div>
-
             <div class="card-reveal">
               <span class="card-title grey-text text-darken-4"><%= review.content %><i class="material-icons right">close</i></span>
+              <%= review.review_link %>
               <p>
-                Hammock talk come soon. The other day the grass was brown, now it’s green because I ain’t give up. Never surrender. I’m giving you cloth talk, cloth. Special cloth alert, cut from a special cloth. Watch your back, but more importantly when you get out the shower, dry your back, it’s a cold world out there. The key to success is to keep your head above the water, never give up. Bless up.
+
               </p>
                 <% @users.each do |user| %>
                   <% if user['id'] === review['user_id'] %>
@@ -33,4 +33,3 @@
     </div> <!-- ROW -->
     <% end %>
   <% end %>
-

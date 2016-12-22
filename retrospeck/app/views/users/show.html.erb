@@ -1,7 +1,27 @@
 
+<div class="row">
+    <div class="col s12">
+      <span class="card-title"><%=@user.user_name%>'s Reviews</span>
+      <ul class="collapsible popout" data-collapsible="expandable">
+        <% if @reviews.empty? %>
+          <%= flash[:notice] %>
+        <% else %>
+          <% @reviews.each do |review| %>
+        <li>
+          <div class="collapsible-header"><p><%= review['title'] %><i class="material-icons right">explicit</i></p></div>
+            <div class="collapsible-body">
+              <p><%= review['content'] %></p>
+            </div>
+        </li>
+        <% end %>
+      <% end %>
+      </ul>
+    </div>
+
+
      <h5><span class="card-title"><%=@user.user_name%>'s Reviews</span></h5>
      <ul class="collapsible popout" data-collapsible="expandable">
-         <% @review.each do |review| %>
+         <% @reviews.each do |review| %>
        <li>
          <div class="collapsible-header"><p><%= review['title'] %><i class="material-icons right">more_vert</i></p></div>
            <div class="collapsible-body">

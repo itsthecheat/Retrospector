@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
 
   before_filter :save_login_state, :only => [:new, :create]
+  helper_method :username
+
 
   #For the new form method
   def new
@@ -37,8 +39,8 @@ class UsersController < ApplicationController
   end
 
   def show
-   @review = Review.where(user_id: params[:id])
-   @user = User.find_by(id: params[:id])
+    @reviews = Review.where(user_id: params[:id])
+    @user = User.find_by(id: params[:id])
   end
 
   #Fix because this is like some hybrid version of 4/5
