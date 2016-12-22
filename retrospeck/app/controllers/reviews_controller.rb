@@ -6,7 +6,7 @@ before_filter :authenticate_user, :only => [:home, :profile, :setting, :new]
       response = HTTParty.get("https://newsapi.org/v1/articles?source=associated-press&sortBy=top&apiKey=#{ENV['news']}", {format: :json})
       @data = response['articles'].sample
       #walmart_api
-      @item_num = $walmart
+      @item_num = $walmart.sample
       response = HTTParty.get("http://api.walmartlabs.com/v1/reviews/#{@item_num}?apiKey=#{ENV['walmart']}", {format: :json})
       @walmart = response['reviews'].sample
       # yelp
@@ -14,7 +14,8 @@ before_filter :authenticate_user, :only => [:home, :profile, :setting, :new]
       res = Yelp.client.search($cities, params)
       @yelp = res.businesses.sample
       #twitter
-      @tweet = $twitter.user_timeline($top_100, count: 2)
+      @tweet = $twitter.user_timeline($top_100.sample, count: 1)
+      @tweet2 = $twitter.user_timeline($top_100.sample, count: 1)
     end
 
     def new

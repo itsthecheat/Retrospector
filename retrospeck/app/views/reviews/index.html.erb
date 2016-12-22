@@ -4,7 +4,7 @@
       </div>
 
       <div class="col s6 m6 card-panel">
-        <h5 class="blue-text text-darken-2 center-align">Trending Posts</h5>
+        <h5 class="blue-text text-darken-2 center-align">Review These</h5>
       </div>
     <!-- MOST RECENTREVIEWS  + MOST LIKED REVIEWS-->
 
@@ -36,7 +36,6 @@
                 <br>
                 <% @users.each do |user| %>
                   <% if user['id'] === review['user_id'] %>
-                    <a href='/users/<%= user['id'] %>'><%= user['user_name'] %>
                    <p>By:<a href="/users/<%= user['id'] %>"> <%= user['user_name'] %> </a></p>
                   <%end%>
                 <%end%>
@@ -63,6 +62,20 @@
             </div>
           </div>
           <% end %>
+          <!-- first tweet -->
+          <% @tweet2.each do |tweet|%>
+           <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <p class="card-content"> <%= tweet['text']%></p>
+            </div>
+
+            <div class="card-content">
+              <p class="truncate"><span class="card-title activator grey-text text-darken-4"><%= tweet['user']['screen_name']%></span></p>
+              <%= link_to "Review", new_review_path(:data1 => tweet['text'], :data2 => nil) %>
+            </div>
+          </div>
+          <% end %>
+          <!-- second tweet -->
           <!-- YELP API -->
           <div class="card">
             <div class="card-image waves-effect waves-block waves-light">
@@ -70,7 +83,7 @@
             </div>
 
             <div class="card-content">
-              <p class="truncate"><span class="card-title activator grey-text text-darken-4"> Yelp Title</span></p>
+              <p class="truncate"><span class="card-title activator grey-text text-darken-4"><%=@yelp.name%></span></p>
               <p><%= link_to "Review", new_review_path(:data1 => @yelp.url, :data2 => @yelp.name) %>
             </div>
           </div>

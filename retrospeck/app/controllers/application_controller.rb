@@ -26,9 +26,9 @@ class ApplicationController < ActionController::Base
 
   $top_100 = ["katyperry", "justinbieber", "taylorswift13", "BarackObama", "rihanna", "ladygaga", "TheEllenShow", "britneyspears", "jtimberlake", "Cristiano", "selenagomez", "jimmyfallon", "ArianaGrande", "shakira", "ddlovato", "Oprah", "JLo", "KingJames",
               "KevinHart4real", "onedirection", "MileyCyrus", "Harry_Styles", "Pink", "Adele", "BrunoMars", "kanyewest", "KAKA", "Pitbull", "ConanOBrien", "davidguetta", "realmadrid", "Louis_Tomlinson", "BeingSalmanKhan", "NICKIMINAJ", "KendallJenner", "zaynmalik",
-              "AvrilLavigne", "KylieJenner", "ashkaykumar", "xtina", "RyanSeacrest", "SnoopDogg"].sample
+              "AvrilLavigne", "KylieJenner", "ashkaykumar", "xtina", "RyanSeacrest", "SnoopDogg"]
 
-  $walmart = [54742302, 17448685, 33093101, 46170059, 21293492, 54134701, 48464778, 15162454, 120692442, 45435445, 42338082, 37160038, 17056813, 20690440, 25735986].sample
+  $walmart = [54742302, 17448685, 33093101, 46170059, 21293492, 54134701, 48464778, 15162454, 120692442, 45435445, 42338082, 37160038, 17056813, 20690440, 25735986]
 
 require 'twitter'
 $twitter = Twitter::REST::Client.new do |config|

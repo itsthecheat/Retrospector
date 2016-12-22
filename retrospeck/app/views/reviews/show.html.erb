@@ -2,7 +2,12 @@
   <div class="col s12 m12">
         <ul class="collection with-header">
         <li class="collection-header"><h5><%= @review['title'] %></h5></li>
-        <li class="collection-item card-content"><p><%= @review['content'] %></p></li>
+        <li class="collection-item card-content">
+          <p><%= @review['content'] %>
+            <br><br>
+            <h5>Link for full review</h5>
+            <%= @review.review_link %>
+          </p></li>
       </ul>
   </div>
 </div>
