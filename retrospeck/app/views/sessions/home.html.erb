@@ -1,15 +1,10 @@
 <div><h6><a href='/logout'>Not <%=@current_user.user_name%>? Logout</a></h6></div>
-<!-- <div><h6><a href="#">Profile Info</a></h6></div> -->
 <div><h4>Welcome, <%=@current_user.user_name%>!</h4></div>
-<!-- <p>Find me in app/views/sessions/home.html.erb</p> -->
-<!-- <h2>YOU DID IT </h2> -->
 <br />
+
 <div class="row">
-
-    <div class="col s6">
-
+    <div class="col s12 m12">
       <h5><span class="card-title">Your Reviews</span></h5>
-
       <ul class="collapsible popout" data-collapsible="expandable">
         <% if @reviews.empty? %>
           <%= flash[:notice] %>
@@ -19,31 +14,13 @@
           <div class="collapsible-header"><p><%= review['title'] %><i class="material-icons right">more_vert</i></p></div>
             <div class="collapsible-body">
               <p><%= review['content'] %></p>
-
               <button class="btn waves-effect waves-light #64b5f6 blue lighten-2" type="submit" name="delete"><%= button_to 'Delete', review, method: :delete %></button>
               <a href="/reviews/<%= review['id']%>/edit" class="btn waves-effect waves-light #64b5f6 blue lighten-2">Edit</a>
             </div>
-
         </li>
         <% end %>
       <% end %>
       </ul>
     </div>
-
-    <div class="col s6">
-
-    <h5><span class="card-title">Reviews you've liked!</span></h5>
-      <ul class="collapsible popout" data-collapsible="expanable">
-        <li>
-          <div class="collapsible-header"><p>Your Article title<i class="material-icons right">more_vert</i></p></div>
-          <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
-        </li>
-        <li>
-          <div class="collapsible-header"><p>Your Article title<i class="material-icons right">more_vert</i></p></div>
-          <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
-        </li>
-      </ul>
-    </div>
-
   </div>
 </div>
