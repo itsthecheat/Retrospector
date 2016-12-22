@@ -62,6 +62,6 @@ Rails.application.configure do
     :authentication       => "plain",
     :enable_starttls_auto => true
   }
-  config.action_mailer.default_url_options = { :host => '/' }
+  config.action_mailer.default_url_options = { :host => 'https://dry-waters-78415.herokuapp.com/' }
 
 end
