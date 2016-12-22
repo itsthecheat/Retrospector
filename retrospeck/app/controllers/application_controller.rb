@@ -12,9 +12,9 @@ class ApplicationController < ActionController::Base
      "gloria-jeans-coffee","hard-rock-cafe","hooters","ihop","kfc","krispy-kreme",
      "little-ceasers","panera-bread","papa-johns","pizza-hut","popeyes-chicken","quiznos",
      "rainforest-cafe","sizzler","starbucks","subway","sweet-frog","tim-hortons",
-     "whataburger","white-castle", 'cannabis'].sample
+     "whataburger","white-castle", 'cannabis']
 
-  $cities = ['New York', 'Orlando', 'Las Vegas', 'New Orleans', 'Denver', 'San Antonio'].sample
+  $cities = ['New York', 'Orlando', 'Las Vegas', 'New Orleans', 'Denver', 'San Antonio']
 
 
   $sources = ["abc-news-au", "ars-technica", "associated-press", "bbc-news", "bbc-news", "bbc-sport", "bild", "bloomberg", "business-insider", "business-insider-uk", "buzzfeed", "cnbc", "cnn", "daily-mail",

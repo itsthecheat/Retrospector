@@ -10,8 +10,8 @@ before_filter :authenticate_user, :only => [:home, :profile, :setting, :new]
       response = HTTParty.get("http://api.walmartlabs.com/v1/reviews/#{@item_num}?apiKey=#{ENV['walmart']}", {format: :json})
       @walmart = response['reviews'].sample
       # yelp
-      params = {term: $yelp_reviews}
-      res = Yelp.client.search($cities, params)
+      params = {term: $yelp_reviews.sample}
+      res = Yelp.client.search($cities.sample, params)
       @yelp = res.businesses.sample
       #twitter
       @tweet = $twitter.user_timeline($top_100.sample, count: 1)
