@@ -1,8 +1,3 @@
-
-
-
-<!-- <a href="/users/new">Create a new user</a> -->
-
 <div class="row">
       <div class="col s6 m6 card-panel">
         <h5 class="blue-text text-darken-2 center-align">Recent Posts</h5>
@@ -63,15 +58,6 @@
           <% @tweet.each do |tweet|%>
            <div class="card">
             <div class="card-image waves-effect waves-block waves-light">
-              <p class="card-content"> <%= tweet['text']%> <%= tweet['user']['screen_name']%> </p>
-              <p class="card-content"> <%= @yelp %></p>
-              <p class="card-content">
-              <% @walmart.each do |review|%>
-               Reviewer: <%= review['reviewer']%>
-               Item: <%= review['name']%>
-               <%= review['reviewText']%></p>
-              <%end%>
-
               <p class="card-content"> <%= tweet['text']%></p>
             </div>
 
@@ -81,7 +67,6 @@
             </div>
           </div>
           <% end %>
-
 
           <!-- YELP API -->
           <div class="card">
@@ -131,4 +116,4 @@
       <!-- LIKED REVIEWS -->
     </div>
 
-  </div>
+</div>

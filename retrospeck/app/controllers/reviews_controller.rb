@@ -1,17 +1,8 @@
-
 class ReviewsController < ApplicationController
 before_filter :authenticate_user, :only => [:home, :profile, :setting, :new]
-
     def index
-
-  #variables to generate random params
-      @article = $sources.sample
-      @rand = $top_100.sample
-      @item_num = $walmart.sample
-
       @reviews = Review.all
       @users = User.all
-
       response = HTTParty.get("https://newsapi.org/v1/articles?source=associated-press&sortBy=top&apiKey=#{ENV['news']}", {format: :json})
       @data = response['articles'].sample
       #walmart_api
@@ -55,8 +46,7 @@ before_filter :authenticate_user, :only => [:home, :profile, :setting, :new]
               user_id: session[:user_id]
               )
   redirect_to "/home"
-    end
-
+end
 
     def search
       @users = User.all
